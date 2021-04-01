@@ -1,0 +1,48 @@
+<h1> Articles VIPs </h1>
+
+<div class="liste_vip">
+    <h2>VIPs</h2>
+    <ul>
+        {{#each vips}}
+            <li><a href="/articles/{{this.vip_numero}}">{{this.vip_nom}}</a></li>
+        {{/each}}
+    </ul>
+</div>
+
+
+
+{{#if sansArticles}}
+    <fieldset>
+        <legend>Article</legend>
+
+        <p>Choisissez un vip pour voir les articles le concernant</p>
+    </fieldset>
+
+{{else}}
+
+    {{#if articles}}
+
+        {{#each articles}}
+        
+            <fieldset>
+                <legend>Article</legend>
+
+                <h3>{{this.article_titre}}</h3>
+
+                <p>{{this.article_resume}}</p>
+
+                <div>
+                    <p> [Ajouté le {{formatDate this.article_date 'DD MMMM YYYY' }}] </p>
+                    <a href="/repertoire/{{../vip_num}}">Voir sa fiche</a>
+                </div>
+            </fieldset>
+
+        {{/each}}
+
+    {{else}}
+
+        <p>Pas d'articles attribués à ce vip</p>
+
+    {{/if}}
+
+{{/if}}

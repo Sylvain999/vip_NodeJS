@@ -1,0 +1,38 @@
+<div class="formBloc">
+    {{>menuPhoto}}
+
+    <fieldset>
+
+        <legend>Ajout Photo</legend>
+
+        <form id="ajoutPhoto" action="" method="POST">
+
+            <div class="remplir">
+
+                <label for="id_vip"> Nom du Vip : </label>
+                <select id="id_vip" name="id_vip">
+                    {{#each vips}}
+                        <option value="{{this.id}}"> {{this.nom}} </option>
+                    {{/each}}
+                </select>
+
+                <label for="photo">Adresse de la photo : </label>
+                <input id="photo" name="photo" type="file" required/>
+        
+                <label for="titre_photo">Titre : </label>
+                <input id="titre_photo" name="titre_photo" type="text"/>
+        
+                <label for="commentaire">Un petit commentaire ? </label>
+                <input id="commentaire" name="commentaire" type="text"/>
+
+            
+            </div>
+        
+            <input type="submit" value="Envoyer"/>
+            <input type="reset" value="Annuler"/>
+       
+        </form>
+
+    </fieldset>
+
+</div>

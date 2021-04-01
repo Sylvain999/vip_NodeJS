@@ -1,0 +1,65 @@
+<div class="formBloc">
+    {{>menuVip}}
+
+    <fieldset>
+        <legend>Ajouter Vip</legend>
+    
+        <form id="addVip" action="" method="POST">
+            <div class="remplir">
+                <label for="nom">Nom* : </label>
+                <input type="text" name="nom" id="nom" required/>
+
+                <label for="prenom">Prénom* : </label>
+                <input type="text" name="prenom" id="prenom" required/>
+
+                <label for="sexe">Sexe : </label>
+                <select name="sexe" id="sexe">
+                    <option value="F">Féminin</option>
+                    <option value="M">Masculin</option>
+                </select>
+
+                <label for="date">Date de naissance* : </label>
+                <input type="date" name="date" id="date" required/>
+
+                <label for="nationalite">Nationalité : </label>
+                <select name="nationalite" id="nationalite">
+                    {{#each nationalite}}
+                    <option value="{{this.id}}">{{this.nom}}</option>
+                    {{/each}}
+                </select>
+
+                <label for="commentaire">Commentaire : </label>
+                <textarea  id="commentaire" name="commentaire" 
+                    rows="3" cols="33" value=""></textarea>
+
+                <label for="image">Sélectioner l'image* : </label>
+                <input type="file"
+                id="image" name="image"
+                accept="image/png, image/jpeg"
+                required />
+
+                <label for="sujet_image">Sujet : </label>
+                <input type="text"
+                id="sujet_image" name="sujet_image" />
+
+
+                <label for="commentaire_photo">Sujet : </label>
+                <textarea id="commentaire_photo" name="commentaire_photo" rows="3" cols="33"></textarea>
+
+            </div>
+
+            {{#if error}}
+                <p>{{error}}</p>
+            {{/if}}
+
+            {{#if message}}
+                <p>{{message}}</p>
+            {{/if}}
+
+
+            <input type="submit" value="Ajouter le VIP"/>
+            <input type="reset" value ="Annuler"/>
+        </form>
+    </fieldset>
+
+</div>

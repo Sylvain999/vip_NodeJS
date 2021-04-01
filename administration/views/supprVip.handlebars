@@ -1,0 +1,24 @@
+<div class="formBloc">
+    {{>menuVip}}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each vips}}
+                <tr>
+                    <td> {{this.id}} </td>
+                    <td> {{this.nom}} </td>
+                    <td> <a href="/deleteVip/{{this.id}}"> <img src="/images/delete.png" alt="delete"/> </a> </td>
+                </tr>
+            {{/each}}
+        </tbody>
+        
+    </table>
+    
+</div>

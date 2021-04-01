@@ -1,0 +1,183 @@
+{{>lettres}}
+
+<div class="detailsVip">
+    <img src="/images/vip/{{details.adresse_photo_1}}" alt="probleme">
+
+    <p><b>Nom :</b> {{details.nom}} </p>
+
+    <p><b>Date de naissance : </b> {{formatDate details.date_naissance 'DD MMMM YYYY' }}</p>
+
+    <p><b>Nationalité :</b> {{details.nationalite}} </p>
+
+    {{#if acteur}}
+    <div>
+        <p><b>Profession :</b> 
+        {{#if_eq details.sexe "M"}}
+            Acteur
+        {{else}}
+            Actrice
+        {{/if_eq}}    
+        </p>
+
+        <b>Principal(aux) film(s) :</b>
+
+        {{#each acteur}}
+            {{this.film_titre}} ({{formatDate this.film_daterealisation 'MMMM YYYY' }}) de 
+            <span class="containerLien">
+                <a href="/repertoire/{{this.id_realisateur}}"> {{this.nom_realisateur}} </a>
+                {{>InfoBulle photo_adresse=this.photo_adresse vip_texte=this.com_realisateur vip_nom=this.nom_realisateur}}
+            </span>
+            
+            <br/>
+        {{/each}}
+        
+    </div>
+    {{/if}}
+
+
+    {{#if realisateur}}
+    <div>
+        <p><b>Profession :</b> 
+        {{#if_eq details.sexe "M"}}
+            Realisateur
+        {{else}}
+            Realisatrice
+        {{/if_eq}}    
+        </p>
+
+        <b>Principal(aux) film(s) :</b>
+        {{#each realisateur}}
+            {{this.film_titre}} ({{formatDate this.film_daterealisation 'MMMM YYYY' }})
+            <br/>
+        {{/each}}
+        
+    </div>
+    {{/if}}
+
+
+    {{#if chanteur}}
+    <div>
+        <p><b>Profession :</b> 
+        {{#if_eq details.sexe "M"}}
+            Chanteur
+        {{else}}
+            Chanteuse
+        {{/if_eq}}  
+        ({{chanteur.specialite}})  
+        </p>
+
+        <b>Principal(aux) album(s) :</b>
+        {{#each chanteur.details}}
+            {{this.album_titre}} ({{formatDate this.album_date 'MMMM YYYY' }}) {{this.maisondisque_nom}}
+            <br/>
+        {{/each}}
+        
+    </div>
+    {{/if}}
+
+
+    {{#if mannequin}}
+    <div>
+        <p><b>Profession :</b> 
+        Mannequin   
+        </p>
+
+        <b>Principal(aux) défilé(s) :</b>
+        {{#each mannequin}}
+            {{this.defile_lieu}} ({{formatDate this.defile_date 'MMMM YYYY' }}) de 
+            <span class="containerLien"><a href="/repertoire/{{this.id_couturier}}">{{this.nom_couturier}}</a>
+            
+            {{>InfoBulle photo_adresse=this.photo_adresse vip_texte=this.com_couturier vip_nom=this.nom_couturier}}
+
+            </span>
+            
+            <br/>
+        {{/each}}
+
+        <br/>
+        
+    </div>
+    {{/if}}
+
+
+    {{#if couturier}}
+    <div>
+        <p><b>Profession :</b> 
+        {{#if_eq details.sexe "M"}}
+            Couturier
+        {{else}}
+            Couturière
+        {{/if_eq}}    
+        </p>
+
+        <b>Principal(aux) défilé(s) :</b>
+        {{#each couturier}}
+            {{this.defile_lieu}} ({{formatDate this.defile_date 'MMMM YYYY' }})
+            <br/>
+        {{/each}}
+        
+    </div>
+    {{/if}}
+
+
+
+    {{#if mariage}}
+    <div>
+        <b>Mariage(s) :</b> 
+
+        {{#each mariage}}
+            <span class="containerLien">
+                <a href='/repertoire/{{this.id_marie}}' /> {{this.nom_marie}} </a>
+                {{>InfoBulle photo_adresse=this.photo_adresse vip_texte=this.com_marie vip_nom=this.nom_marie}}
+            </span>
+            ({{formatDate this.date_evenement 'MMMM YYYY' }} 
+            {{#if this.mariage_fin}}
+                --> {{formatDate this.mariage_fin 'MMMM YYYY' }}
+            {{/if}}
+            )
+            <b>lieu :</b> {{this.mariage_lieu}}
+            <br/>
+        {{/each}}
+
+        </p>
+        
+    </div>
+    {{/if}}
+
+
+    {{#if liaison}}
+    <div>
+        <b>Liaison(s) :</b> 
+
+        {{#each liaison}}
+            <span class="containerLien">
+                <a href='/repertoire/{{this.id_liaison}}'/> {{this.nom_liaison}}</a>
+                {{>InfoBulle photo_adresse=this.photo_adresse vip_texte=this.com_liaison vip_nom=this.nom_liaison}}
+            </span>
+
+            ({{formatDate this.date_evenement 'MMMM YYYY' }})
+            {{#if this.liaison_motiffin}}
+                <b>raison fin liaison :</b> {{this.liaison_motiffin}}
+            {{/if}}
+            <br/>
+        {{/each}}
+
+        </p>
+        
+    </div>
+    {{/if}}
+
+
+
+    <p><b>Qui suis-je ?</b> {{details.description}} </p>
+
+
+    <div class="photosRep">
+        {{#each photos}}
+            <a href="/images/vip/{{this.adresse_photo}}" data-lightbox="photoVip" data-title="{{photo_sujet}}">
+                <img src="/images/vip/{{this.adresse_photo}}" alt="photo" />
+            </a>
+        {{/each}}
+    </div>
+
+</div>

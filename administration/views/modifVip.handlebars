@@ -1,0 +1,66 @@
+<div class="formBloc">
+    {{>menuVip}}
+
+    <fieldset>
+
+        <legend>Modifier Vip</legend>
+
+        <form id="modifVip" action="" method="POST">
+            
+            <div class="remplir">
+                <label for="nom">Nom* : </label>
+                <input 
+                type="text" name="nom" id="nom" 
+                value="{{vip.vip_nom}}" required/>
+
+                <label for="prenom">Prénom* : </label>
+                <input type="text" name="prenom" id="prenom" 
+                value="{{vip.vip_prenom}}" required/>
+            
+                <label for="sexe">Sexe : </label>
+                <select name="sexe" id="sexe">
+                    <option value="F">Féminin</option>
+                    <option value="M"
+                    {{#ifCond vip.vip_sexe "==" "M"}}
+                    selected="selected"
+                    {{/ifCond}}
+                    >Masculin</option>
+                </select>
+
+                <label for="date">Date de naissance : </label>
+                <input type="date" name="date" id="date" required
+                value="{{vip.vip_naissance}}"/>
+        
+                <label for="nationalite">Nationalité : </label>
+                <select name="nationalite" id="nationalite">
+                    {{#each nationalite}}
+                    <option value="{{this.id}}"
+                    {{#ifCond ../vip.nationalite_numero "==" this.id}}
+                    selected="selected"
+                    {{/ifCond}}
+                    >{{this.nom}}</option>
+                    {{/each}}
+                </select>
+            
+                <label for="commentaire">Commentaire : </label>
+                <textarea  id="commentaire" name="commentaire" 
+                    rows="5" cols="33">{{vip.vip_texte}}
+                </textarea>
+            
+                <label for="sujet_image">Sujet : </label>
+                <input type="text"
+                id="sujet_image" name="sujet_image" 
+                value="{{image.photo_sujet}}"/>
+            
+                <label for="commentaire_photo">Commentaire de la photo : </label>
+                <textarea  id="commentaire_photo" name="commentaire_photo" 
+                    rows="5" cols="33">{{image.photo_commentaire}}
+                </textarea>
+            </div>
+
+            <input type="submit" value="Modifier le VIP"/>
+        </form>
+
+    </fieldset>
+
+</div>

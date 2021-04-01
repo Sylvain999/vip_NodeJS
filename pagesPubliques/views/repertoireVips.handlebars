@@ -1,0 +1,12 @@
+<h1> Mettre ici la première lettre du nom des VIPs </h1>
+
+{{>lettres}}
+
+<div class="photosRep">
+    {{#each adrPhotos}}
+    <div class="elementPhotoRep">
+        <img src="/images/vip/{{this.adresse}}" alt="probleme">
+        <a href="/repertoire/{{this.vip_numero}}">{{this.nom}}</a>
+    </div>
+    {{/each}}
+</div>

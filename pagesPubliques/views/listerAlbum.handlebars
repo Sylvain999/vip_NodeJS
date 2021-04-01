@@ -1,0 +1,74 @@
+{{#if photos}}
+
+<div>
+    <div class="photos_albums">
+    {{#each photos}}
+    
+    <a href="/album/{{this.vip_numero}}">
+        <img src="/images/vip/{{this.photo_adresse}}" 
+        {{#ifCond ../vip_numero "!=" this.vip_numero}}
+        class="imageNonSelectionne"
+        {{/ifCond}}
+        />
+    </a>
+    
+    {{/each}}
+
+    <div class="boutonsAlbums">
+        <div>
+            {{#if page_avant}}
+                <a href="/album/{{this.vip_numero}}/{{photo_num}}/1">
+                    Début
+                </a>
+            {{/if}}
+
+            {{#if page_avant}}
+                <a href="/album/{{this.vip_numero}}/{{photo_num}}/{{page_avant}}">
+                    Précédent
+                </a>
+            {{/if}}
+        </div>
+
+        <div>
+            {{#if page_apres}}
+                <a href="/album/{{this.vip_numero}}/{{photo_num}}/{{page_apres}}">
+                    Suivant
+                </a>
+            {{/if}}
+
+            {{#if page_apres}}
+                <a href="/album/{{this.vip_numero}}/{{photo_num}}/{{operation nb_vips 'div' '12'}}">
+                    Fin
+                </a>
+            {{/if}}
+        </div>
+
+    </div>
+
+    </div>
+
+    <div class="photo_affiche">
+        <h2>{{photo_actuel.nom}}</h2>
+
+        <div class="caroussel_photo_affiche">
+            {{#if click_avant}}
+            <a href="/album/{{vip_numero}}/{{click_avant}}"/> &lt;&lt; </a>
+            {{/if}}
+
+            <img src="/images/vip/{{photo_actuel.photo_adresse}}" alt="photo" />
+
+            {{#if click_apres}}
+            <a href="/album/{{vip_numero}}/{{click_apres}}"/> &gt;&gt; </a>
+            {{/if}}
+        </div>
+
+        <fieldset>
+        <legend>Commentaires</legend>
+
+        <p>{{photo_actuel.photo_commentaire}}</p>
+    </fieldset>
+    </div>
+
+</div>
+
+{{/if}}

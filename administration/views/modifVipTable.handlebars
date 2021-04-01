@@ -1,0 +1,24 @@
+<div class="formBloc">
+    {{>menuVip}}
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each vips}}
+                <tr>
+                    <td> {{this.id}} </td>
+                    <td> {{this.nom}} </td>
+                    <td> <a href="/modifyVip/{{this.id}}"> Modify </a> </td>
+                </tr>
+            {{/each}}
+        </tbody>
+        
+    </table>
+    
+</div>

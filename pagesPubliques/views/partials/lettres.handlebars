@@ -1,0 +1,9 @@
+<div class="lettres">
+    <b> Cliquez sur une lettre : </b>
+    {{#each lettresVip}}
+    <a href="/repertoire?lettre={{this.vip_lettre}}" class>
+        {{this.vip_lettre}}
+    </a>
+    {{/each}}
+    
+</div>

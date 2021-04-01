@@ -1,0 +1,18 @@
+body {
+    background-color: black;
+    color: white;
+    text-align: center;
+    height: 100%;
+}
+
+main {
+    margin-top: 200px;
+}
+
+.formLogin {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 300px;
+    margin: auto;
+    row-gap: 10px;
+}

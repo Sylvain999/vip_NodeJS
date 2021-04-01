@@ -1,0 +1,47 @@
+<div class="formBloc">
+
+    {{>menuPhoto}}
+
+    <div>
+
+        <form action="" method="POST" id="choixVIP" name="choixVip">
+            <label for="vip">Choisissez le vip : </label>
+            <select id="vip" name="vip" onChange="javascript:document.getElementById('choixVIP').submit()">
+                <option value="-1">Choisissez le vip</option>
+                {{#each vips}}
+                    <option value="{{this.id}}" >{{this.nom}}</option>
+                {{/each}}
+            </select>
+        </form>
+
+
+        {{#if photos}}
+            <table>
+                <thead>
+                    <tr>
+                        <th> adresse photo </th>
+                        <th> titre </th>
+                        <th></th>
+                    </tr>
+                </thead> 
+                <tbody>
+                    {{#each photos}}
+                    <tr>
+                        <td> {{this.photo_adresse}} </td>
+                        <td> {{this.photo_sujet}} </td>
+                        <td> 
+                            {{#ifCond this.photo_numero '!=' '1'}}
+                                <a href="/deletePhoto/{{this.photo_numero}}"> <img src="/images/delete.png" alt="delete"/> </a>
+                            {{/ifCond}}
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+
+            <p> <i> A noter que la première image ne peut être supprimé </i> </p>
+        {{/if}}
+
+    </div>
+
+</div>
